@@ -18,6 +18,7 @@ class counter extends Component {
     return (
       <div>
         <h1>Hello ninja</h1>
+        <h2>Super</h2>
         <p>Current Count: {this.state.count}</p>
         <button onClick={this.increment}>Increment Count</button>
       </div>
