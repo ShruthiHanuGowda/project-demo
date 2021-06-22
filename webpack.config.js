@@ -2,8 +2,10 @@ const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
+  mode: isDevelopment ? 'development' : 'production',
   entry: path.resolve(__dirname, 'src') + '/app.js',
   output: {
     path: path.resolve(__dirname, 'build'),
