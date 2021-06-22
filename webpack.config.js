@@ -3,13 +3,14 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const isDevelopment = process.env.NODE_ENV !== 'production';
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: isDevelopment ? 'development' : 'production',
   entry: path.resolve(__dirname, 'src') + '/app.js',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
+    filename: isDevelopment ? 'bundle.js' : 'bundle.hash.js',
   },
   module: {
     rules: [
@@ -56,6 +57,7 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
+    new CleanWebpackPlugin(),
   ],
 
   //for router with different url to map to index.html always
