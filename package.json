@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "heroku-prebuild": "npm install --dev",
     "start": "webpack serve --mode development",
     "build": "webpack --mode production --config webpack.config.js",
     "test": "jest"
