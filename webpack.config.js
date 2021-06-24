@@ -2,15 +2,13 @@ const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
-const isDevelopment = process.env.NODE_ENV !== 'production';
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: isDevelopment ? 'development' : 'production',
   entry: path.resolve(__dirname, 'src') + '/app.js',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: isDevelopment ? 'bundle.js' : 'bundle.hash.js',
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -52,11 +50,6 @@ module.exports = {
       template: './src/index.html',
     }),
     new MiniCssExtractPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-      },
-    }),
     new CleanWebpackPlugin(),
   ],
 
