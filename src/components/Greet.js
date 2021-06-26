@@ -1,21 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { data } from './data';
 
-const Greet = (props) => {
-  const { image, author } = props.singleObj;
-  const clickHandle = (e) => {
-    console.log(e.target.value);
-  };
-
+const Greet = () => {
+  const [num, setNum] = useState(0);
   return (
-    <div
-      onMouseOver={() => {
-        console.log(author);
-      }}
-    >
-      <img src={image} />
-      <p>{author}</p>
-      <button onClick={clickHandle}>Click Me</button>
-    </div>
+    <>
+      <section>
+        <h2>Regular Counter</h2>
+        <h1>{num}</h1>
+        <button onClick={() => setNum(num + 1)}>Increase</button>
+        <button onClick={() => setNum(num - 1)}>Decrease</button>
+        <button onClick={() => setNum(0)}>Reset</button>
+      </section>
+    </>
   );
 };
 

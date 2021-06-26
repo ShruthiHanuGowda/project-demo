@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { arrayObj } from './components/ArrayObj';
-import Greet from "./components/Greet"
+import Greet from './components/Greet';
+import './app.scss';
 
 const App = () => {
   return (
-    <div>
-      {arrayObj.map((singleObj) => {
-        return <Greet key={singleObj.id} singleObj={singleObj} />;
-      })}
+    <div className='container'>
+      <Greet />
     </div>
   );
 };
