@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
-import { data } from './data';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Header from './Header';
+import ProductListing from './ProductListing';
+import ProductDetails from './ProductDetails';
 
 const Greet = () => {
-  const [num, setNum] = useState(0);
   return (
-    <>
-      <section>
-        <h2>Regular Counter</h2>
-        <h1>{num}</h1>
-        <button onClick={() => setNum(num + 1)}>Increase</button>
-        <button onClick={() => setNum(num - 1)}>Decrease</button>
-        <button onClick={() => setNum(0)}>Reset</button>
-      </section>
-    </>
+    <div>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path='/' exact component={ProductListing} />
+          <Route path='/product/:productId' exact component={ProductDetails} />
+          <Route>404 Not Found</Route>
+        </Switch>
+      </Router>
+    </div>
   );
 };
 
